@@ -1,0 +1,4 @@
+main: org.hyphenical.nametagapi.NametagAPI
+name: NametagAPI
+author: Hyphenical Technologies
+version: 1.0.0
