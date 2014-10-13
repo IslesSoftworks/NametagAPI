@@ -5,18 +5,17 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 /**
- * This event is fired whenever a nametag changes due to: </br> A group node
- * prefix and suffix being set (NametagChangeReason.GROUP_NODE) </br> A prefix /
- * suffix is set through the plugin (NametagChangeReason.SET_PREFIX /
- * NametagChangeReason.SET_SUFFIX) </br> A prefix / suffix is set through the
- * API (NametagChangeReason.CUSTOM) </br>
+ * This event is fired whenever a nametag changes via NametagAPI.
+ * 
+ * @author Levi Webb (Original)
+ * @author Hyphenical Technologies (Modifiers)
  */
 public class NametagChangeEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
-    private String player;
-    private String oldPrefix;
-    private String oldSuffix;
+    private final String player;
+    private final String oldPrefix;
+    private final String oldSuffix;
     private String newPrefix;
     private String newSuffix;
     private NametagChangeType type;
@@ -24,17 +23,21 @@ public class NametagChangeEvent extends Event implements Cancellable {
     private boolean cancelled;
 
     /**
-     * You don't need to touch this, this is fired via this plugin. </br> </br>
+     * <b><i>NOTICE:</i></b> This is meant to be an internal event. Manually
+     * firing this event is unnecessary as this library handles it.
      * 
-     * Creates a new NametagChangeEvent with the given properties.
+     * <br>
+     * <br>
      * 
-     * @param player - The player this event is associated with.
-     * @param oldPrefix - The current prefix for the player
-     * @param oldSuffix - The current suffix for the player
-     * @param newPrefix - The prefix to set for the player
-     * @param newSuffix - The suffix to set for the player
-     * @param type - The type of nametag change (hard/soft)
-     * @param reason - The reason why the nametag is being changed.
+     * Constructs a new NametagChangeEvent with the given properties.
+     * 
+     * @param player The player this event is associated with.
+     * @param oldPrefix The current prefix for the player.
+     * @param oldSuffix The current suffix for the player.
+     * @param newPrefix The prefix to set for the player.
+     * @param newSuffix The suffix to set for the player.
+     * @param type The type of nametag change.
+     * @param reason The reason why the nametag is being changed.
      */
     public NametagChangeEvent(String player, String oldPrefix, String oldSuffix, String newPrefix, String newSuffix, NametagChangeType type, NametagChangeReason reason) {
         this.player = player;
@@ -57,9 +60,9 @@ public class NametagChangeEvent extends Event implements Cancellable {
     }
 
     /**
-     * Returns whether this event has been cancelled or not
+     * Returns whether this event has been cancelled or not.
      * 
-     * @return true if the event is cancelled, false otherwise.
+     * @return {@code true} if the event is cancelled, {@code false} otherwise.
      */
     @Override
     public boolean isCancelled() {
@@ -74,7 +77,7 @@ public class NametagChangeEvent extends Event implements Cancellable {
     /**
      * Returns the player's name who is getting their nametag changed.
      * 
-     * @return the player's name
+     * @return The player's name.
      */
     public String getPlayerName() {
         return player;
@@ -83,7 +86,7 @@ public class NametagChangeEvent extends Event implements Cancellable {
     /**
      * Returns the prefix that the player currently has.
      * 
-     * @return the current prefix string
+     * @return the current prefix.
      */
     public String getCurrentPrefix() {
         return oldPrefix;
@@ -92,43 +95,45 @@ public class NametagChangeEvent extends Event implements Cancellable {
     /**
      * Returns the suffix that the player currently has.
      * 
-     * @return the current suffix string
+     * @return The current suffix.
      */
     public String getCurrentSuffix() {
         return oldSuffix;
     }
 
     /**
-     * Returns the prefix that is going to be set if this event is not cancelled
+     * Returns the prefix that is going to be set if this event is not
+     * cancelled.
      * 
-     * @return the prefix to set
+     * @return The prefix to set.
      */
     public String getPrefix() {
         return newPrefix;
     }
 
     /**
-     * Returns the suffix that is going to be set if this event is not cancelled
+     * Returns the suffix that is going to be set if this event is not
+     * cancelled.
      * 
-     * @return the suffix to set
+     * @return The suffix to set.
      */
     public String getSuffix() {
         return newSuffix;
     }
 
     /**
-     * Sets the prefix to set if this event is not cancelled
+     * Sets the prefix to set if this event is not cancelled.
      * 
-     * @param prefix the prefix to set
+     * @param prefix The prefix to set.
      */
     public void setPrefix(String prefix) {
         newPrefix = prefix;
     }
 
     /**
-     * Sets the suffix to set if this event is not cancelled
+     * Sets the suffix to set if this event is not cancelled.
      * 
-     * @param suffix the prefix to set
+     * @param suffix The suffix to set.
      */
     public void setSufix(String suffix) {
         newSuffix = suffix;
@@ -136,54 +141,60 @@ public class NametagChangeEvent extends Event implements Cancellable {
 
     /**
      * Returns the type of nametag change the player will undergo if this event
-     * is not cancelled </br></br> NametagChangeType.HARD - The current prefix
-     * and suffix is completely overwritten by the new ones. </br></br>
-     * NametagChangeType.SOFT - The current prefix and suffix is set only if the
-     * new prefix/suffix is not null/empty. Null and empty prefixes and suffixes
-     * will not be set.
+     * is not cancelled.
      * 
-     * @return the NametagChangeType associated with this event.
+     * @return The NametagChangeType associated with this event.
      */
     public NametagChangeType getType() {
         return type;
     }
 
     /**
-     * Returns the reason for the firing of this event. </br></br>
+     * Returns the reason for the firing of this event.
      * 
-     * NametagChangeReason.SET_PREFIX - The prefix was set with the /ne command
-     * </br></br>
-     * 
-     * NametagChangeReason.SET_SUFFIX - The suffix was set with the /ne command
-     * </br></br>
-     * 
-     * NametagChangeReason.GROUP_NODE - The group node was set from logging in
-     * or resetting the nametag back to the default. </br></br>
-     * 
-     * NametagChangeReason.CUSTOM - The nametag is being set from outside of
-     * NametagEdit.
-     * 
-     * @return the NametagChangeReason associated with this event.
+     * @return The NametagChangeReason associated with this event.
      */
     public NametagChangeReason getReason() {
         return reason;
     }
 
+    /**
+     * Get the event's {@code HandlerList}.
+     * 
+     * @return HandlerList of current handlers for this event.
+     */
     public static HandlerList getHandlerList() {
         return handlers;
     }
 
     /** Represents the type of change a player's nametag can undergo. */
     public enum NametagChangeType {
+        /**
+         * The current prefix and suffix is completely overwritten by the new
+         * ones.
+         */
         HARD,
+
+        /**
+         * The current prefix and suffix is set only if the new prefix/suffix is
+         * not null/empty. Null and empty prefixes and suffixes will not be set.
+         */
         SOFT
     }
 
     /** Represents the reason or cause for the change of a player's nametag. */
     public enum NametagChangeReason {
+        /** Set the player's nametag prefix. */
         SET_PREFIX,
+
+        /** Set the player's nametag suffix. */
         SET_SUFFIX,
-        CUSTOM
+
+        /** The nametag is being set back to vanilla. */
+        VANILLA,
+
+        /** Custom nametag change reason. */
+        CUSTOM;
     }
 
 }

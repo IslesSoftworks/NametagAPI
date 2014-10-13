@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -23,7 +24,7 @@ import org.bukkit.plugin.Plugin;
  */
 final class NametagManager {
 
-    // Prefix to append to all team names
+    /** Prefix to append to all team names. */
     private static final String TEAM_NAME_PREFIX = "NTP";
     private static Map<TeamInfo, List<String>> teams = new HashMap<>();
     private static List<Integer> list = new ArrayList<>();
@@ -34,7 +35,7 @@ final class NametagManager {
      * this plugin.
      */
     static void load() {
-        plugin = NametagPlugin.instance;
+        plugin = NametagPlugin.getInstance();
 
         for (TeamInfo teamInfo : getTeams()) {
             int entry = -1;
@@ -42,7 +43,7 @@ final class NametagManager {
             try {
                 entry = Integer.parseInt(teamInfo.getName());
             } catch (Exception exc) {
-                // silently fail
+                plugin.getLogger().log(Level.FINEST, "Failed to parse integer: " + teamInfo.getName());
             }
 
             if (entry != -1) {

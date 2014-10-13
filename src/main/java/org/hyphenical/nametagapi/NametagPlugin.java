@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NametagPlugin extends JavaPlugin implements Listener {
 
-    static NametagPlugin instance;
+    private static NametagPlugin instance;
 
     @Override
     public void onEnable() {
@@ -29,6 +29,10 @@ public final class NametagPlugin extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         NametagManager.sendTeamsToPlayer(player);
         NametagManager.clear(player.getName());
+    }
+    
+    static NametagPlugin getInstance() {
+        return instance;
     }
 
 }

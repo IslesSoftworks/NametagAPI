@@ -6,24 +6,30 @@ import org.hyphenical.nametagapi.NametagChangeEvent.NametagChangeReason;
 import org.hyphenical.nametagapi.NametagChangeEvent.NametagChangeType;
 
 /**
- * This API class is used to set prefixes and suffixes at a high level, much
- * alike what the in-game /ne commands do. These methods fire events, which can
- * be listened to, and cancelled.
+ * This API class is used to set prefixes and suffixes at a high level. These
+ * methods fire events, which can be listened to, and cancelled.
  * 
  * It is recommended to use this class for light use of NametagAPI.
+ * 
+ * @author Levi Webb (Original)
+ * @author Hyphenical Technologies (Modifiers)
  */
-public class NametagAPI {
+public final class NametagAPI {
 
     private static Plugin plugin;
 
     static {
-        plugin = NametagPlugin.instance;
+        plugin = NametagPlugin.getInstance();
     }
 
+    /** Prevent class instantiation. */
+    private NametagAPI() {}
+
     /**
-     * Sets the custom prefix for the given player </br></br> This method
-     * schedules a task with the request to change the player's name to prevent
-     * it from clashing with the PlayerJoinEvent in NametagAPI.
+     * Sets the custom prefix for the given player <br>
+     * <br>
+     * This method schedules a task with the request to change the player's name
+     * to prevent it from clashing with the PlayerJoinEvent in NametagAPI.
      * 
      * @param player The player to set the prefix for.
      * @param prefix The prefix to use.
@@ -93,7 +99,8 @@ public class NametagAPI {
 
     /**
      * Sets the custom given prefix and suffix to the player. If a given prefix
-     * or suffix is empty/null, it will be ignored. </br> </br>
+     * or suffix is empty/null, it will be ignored. <br>
+     * <br>
      * 
      * @param player The player to set the prefix and suffix for.
      * @param prefix The prefix to use.
@@ -158,7 +165,8 @@ public class NametagAPI {
      * their head. use setNametagSoft and setNametagHard if you don't know what
      * you're doing.
      * 
-     * </br> </br>
+     * <br>
+     * <br>
      * 
      * This method schedules a task with the request to change the player's name
      * to prevent it from clashing with the PlayerJoinEvent in NametagAPI.
@@ -185,9 +193,10 @@ public class NametagAPI {
 
     /**
      * Clears the given player's custom prefix and suffix and sets it to the
-     * group node that applies to that player. </br></br> This method schedules
-     * a task with the request to change the player's name to prevent it from
-     * clashing with the PlayerJoinEvent in NametagAPI.
+     * group node that applies to that player. <br>
+     * <br>
+     * This method schedules a task with the request to change the player's name
+     * to prevent it from clashing with the PlayerJoinEvent in NametagAPI.
      * 
      * @param player The player to reset.
      */
