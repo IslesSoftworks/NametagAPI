@@ -1,4 +1,4 @@
-apply from: '../bukkit-gradle/deploy.gradle'
+apply from: '../gradle-super/artifactory-deploy.gradle'
 apply from: '../bukkit-gradle/minecraft.gradle'
 
 version = '1.0.1'
