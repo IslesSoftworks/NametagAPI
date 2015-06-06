@@ -1,4 +1,4 @@
-package org.hyphenical.nametagapi;
+package net.hyphenical.nametagapi;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

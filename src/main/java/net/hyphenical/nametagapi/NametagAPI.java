@@ -1,9 +1,10 @@
-package org.hyphenical.nametagapi;
+package net.hyphenical.nametagapi;
+
+import net.hyphenical.nametagapi.NametagChangeEvent.NametagChangeReason;
+import net.hyphenical.nametagapi.NametagChangeEvent.NametagChangeType;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
-import org.hyphenical.nametagapi.NametagChangeEvent.NametagChangeReason;
-import org.hyphenical.nametagapi.NametagChangeEvent.NametagChangeType;
 
 /**
  * This API class is used to set prefixes and suffixes at a high level. These

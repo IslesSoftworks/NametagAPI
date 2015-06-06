@@ -1,4 +1,4 @@
-package org.hyphenical.nametagapi;
+package net.hyphenical.nametagapi;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

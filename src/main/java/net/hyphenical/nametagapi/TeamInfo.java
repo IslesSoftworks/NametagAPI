@@ -1,4 +1,4 @@
-package org.hyphenical.nametagapi;
+package net.hyphenical.nametagapi;
 
 /**
  * Represents a scoreboard team, used in the NametagManager
