@@ -186,9 +186,9 @@ final class NametagManager {
     static void sendTeamsToPlayer(Player player) {
         try {
             for (TeamInfo team : getTeams()) {
-                PacketPlayOutScoreboardTeamWrapper packet = new PacketPlayOutScoreboardTeamWrapper(team.getName(), team.getPrefix(), team.getSuffix(), new ArrayList<String>(), 0);
+                PacketHandler packet = new PacketHandler(team.getName(), team.getPrefix(), team.getSuffix(), new ArrayList<String>(), 0);
                 packet.sendToPlayer(player);
-                packet = new PacketPlayOutScoreboardTeamWrapper(team.getName(), Arrays.asList(getTeamPlayers(team)), 3);
+                packet = new PacketHandler(team.getName(), Arrays.asList(getTeamPlayers(team)), 3);
                 packet.sendToPlayer(player);
             }
         } catch (Exception exc) {
@@ -309,7 +309,7 @@ final class NametagManager {
     private static void sendPacketsAddTeam(TeamInfo team) {
         try {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                PacketPlayOutScoreboardTeamWrapper mod = new PacketPlayOutScoreboardTeamWrapper(team.getName(), team.getPrefix(), team.getSuffix(), new ArrayList<String>(), 0);
+                PacketHandler mod = new PacketHandler(team.getName(), team.getPrefix(), team.getSuffix(), new ArrayList<String>(), 0);
                 mod.sendToPlayer(p);
             }
         } catch (Exception exc) {
@@ -338,7 +338,7 @@ final class NametagManager {
 
         try {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                PacketPlayOutScoreboardTeamWrapper mod = new PacketPlayOutScoreboardTeamWrapper(team.getName(), team.getPrefix(), team.getSuffix(), new ArrayList<String>(), 1);
+                PacketHandler mod = new PacketHandler(team.getName(), team.getPrefix(), team.getSuffix(), new ArrayList<String>(), 1);
                 mod.sendToPlayer(p);
             }
         } catch (Exception exc) {
@@ -368,7 +368,7 @@ final class NametagManager {
 
         try {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                PacketPlayOutScoreboardTeamWrapper packet = new PacketPlayOutScoreboardTeamWrapper(team.getName(), Arrays.asList(player), 3);
+                PacketHandler packet = new PacketHandler(team.getName(), Arrays.asList(player), 3);
                 packet.sendToPlayer(p);
             }
         } catch (Exception exc) {
@@ -403,7 +403,7 @@ final class NametagManager {
 
         try {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                PacketPlayOutScoreboardTeamWrapper packet = new PacketPlayOutScoreboardTeamWrapper(team.getName(), Arrays.asList(player), 4);
+                PacketHandler packet = new PacketHandler(team.getName(), Arrays.asList(player), 4);
                 packet.sendToPlayer(p);
             }
         } catch (Exception exc) {
