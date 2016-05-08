@@ -1,4 +1,4 @@
-package net.hyphenical.nametagapi;
+package io.isles.nametagapi;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

@@ -1,4 +1,4 @@
-package net.hyphenical.nametagapi;
+package io.isles.nametagapi;
 
 import java.util.ArrayList;
 import java.util.Arrays;

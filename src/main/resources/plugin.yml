@@ -1,5 +1,5 @@
-main: net.hyphenical.nametagapi.NametagPlugin
+main: io.isles.nametagapi.NametagPlugin
 name: NametagAPI
-author: Hyphenical Technologies
-version: 1.1.2
-website: www.hyphenical.net
+author: Isles Softworks LTD
+version: 1.2.0
+website: www.isles-softworks.com

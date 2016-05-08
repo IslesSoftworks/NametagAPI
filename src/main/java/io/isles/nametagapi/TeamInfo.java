@@ -1,4 +1,4 @@
-package net.hyphenical.nametagapi;
+package io.isles.nametagapi;
 
 /**
  * Represents a scoreboard team, used in the NametagManager
