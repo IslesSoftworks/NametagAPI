@@ -60,6 +60,15 @@ class PacketHandler {
 				fieldDisplayName = "b";
 
 			}
+			else if (version.startsWith("v1_9")){
+				fieldPrefix = "c";
+				fieldSuffix = "d";
+				fieldPlayers = "h";
+				fieldTeamName = "a";
+				fieldParamInt = "i";
+				fieldPackOption = "j";
+				fieldDisplayName = "b";
+			}
 			else {
 				fieldPrefix = "c";
 				fieldSuffix = "d";
