@@ -1,5 +1,5 @@
 main: io.isles.nametagapi.NametagPlugin
 name: NametagAPI
 author: Isles Softworks LTD
-version: 1.2.0
+version: 1.3.0-develop
 website: www.isles-softworks.com
